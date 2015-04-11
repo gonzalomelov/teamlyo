@@ -5,7 +5,7 @@ exports.loadMongoModels = function() {
 	/****** MONGO DB CONNECTION ******/
 	var connect = function() {
 		consoleLogger.data("Connecting to database");
-		mongoose.connect('mongodb://sety:sety@ds061751.mongolab.com:61751/sety');
+		mongoose.connect('mongodb://localhost:27017/sety');
 	};
 	connect();
 

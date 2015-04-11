@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var setsController = require('../controllers/sets.js');
+var controller = require('../controllers/sets.js');
 
 /* GET main page. */
-router.get('/', setsController.getSets);
+router.get('/', controller.getSet);
 
 module.exports = router;
