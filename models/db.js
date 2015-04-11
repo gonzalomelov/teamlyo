@@ -4,14 +4,14 @@ exports.loadMongoModels = function() {
 
 	/****** MONGO DB CONNECTION ******/
 	var connect = function() {
-		consoleLogger.data("Connecting to database");
+		console.log("Connecting to database");
 		mongoose.connect('mongodb://localhost:27017/sety');
 	};
 	connect();
 
 	// Error handler
 	mongoose.connection.on('error', function(err) {
-		consoleLogger.err(err);
+		console.log(err);
 	});
 
 	// Reconnect when closed
