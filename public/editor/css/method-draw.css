@@ -613,7 +613,7 @@ div#workarea {
     position: absolute;
     width: 200px;
     height: 100%;
-    background: #2f2f2c;
+    /* background: #2f2f2c; */
     right: 0;
     top: 54px;
     border-bottom: none;
