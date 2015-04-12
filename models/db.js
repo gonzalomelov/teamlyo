@@ -1,11 +1,15 @@
 var mongoose = require('mongoose');
 
+console.log(process.env.NODE_ENV);
+
+var config = require('../env.json')[process.env.NODE_ENV || 'development'];
+
 exports.loadMongoModels = function() {
 
 	/****** MONGO DB CONNECTION ******/
 	var connect = function() {
 		console.log("Connecting to database");
-		mongoose.connect('mongodb://localhost:27017/sety');
+		mongoose.connect(config['MONGO_URI']);
 	};
 	connect();
 
