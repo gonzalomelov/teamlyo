@@ -117,7 +117,8 @@ function drop(ev) {
 				"y": y,
 				"width": resizedWidth + 'px',
 				"height": resizedHeight + 'px',
-				"xlink:href": imageSrc
+				"xlink:href": imageSrc,
+				"mlId": "MLU425156179"
 			}
 		};
 		console.log(data);
