@@ -11,14 +11,23 @@ exports.getSets = function(req, res, next) {
 }
 
 exports.getSet = function(req, res, next) {
-  res.render('home', { title: 'sety' });
+
+  console.log('get stat')
+  Set.findById(req.params.id, function (err, sets) {
+    if (err){
+      res.status(400);
+      return res.json({errors: [err]});
+    }
+    return res.send(sets);
+  });
+
 }
 
 exports.createSet = function(req, res, next) {
   var set = new Set(req.body);
   set.save(function(err, set, numberAffected) {
     if (err) {
-      res.status(500);
+      res.status(400);
       return res.json({errors: [err]});
     }
     console.log(set);
