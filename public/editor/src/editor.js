@@ -29,7 +29,7 @@ $( document ).ready(function() {
 		$.post("/api/sets",
 			{
 				picture: svgCanvas.getSvgString(),
-				title: 'New set',
+				title: $("#title").val(),
 				likeCount: 2,
 				userId: '5529c014b7626860bc25de99'
 			},
