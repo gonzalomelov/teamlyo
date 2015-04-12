@@ -18,10 +18,10 @@ $( document ).ready(function() {
 			$subcats.append( '<option value="' + item.id + '">' + item.name + '</option>' );
 		});
 	});
- 
+
 	select.change(function() {
-	  var $subcats = $('#subcats');
-	  $subcats.empty();
+		var $subcats = $('#subcats');
+		$subcats.empty();
 		$.getJSON( "https://api.mercadolibre.com/categories/" + select.val(), function( data ) {
 			data.children_categories.forEach(function(item){
 				$subcats.append( '<option value="' + item.id + '">' + item.name + '</option>' );
@@ -42,25 +42,26 @@ $( document ).ready(function() {
 			},
 			function(data,status){
 				console.log(data);
+				location.href = '/set.html?id=' + data._id;
 
-				var saveChanges = function() {
-					svgCanvas.clearSelection();
-					//hideSourceEditor();
-					//zoomImage();
-					Editor.paintBox.fill.prep();
-					Editor.paintBox.stroke.prep();
-
-					//location.href = '/sets/' + data._id;
-				}
-
-				if (!svgCanvas.setSvgString($('#svg_source_textarea').val())) {
-					$.confirm(uiStrings.notification.QerrorsRevertToSource, function(ok) {
-						if(!ok) return false;
-						saveChanges();
-					});
-				} else {
-					saveChanges();
-				}
+				//var saveChanges = function() {
+				//	svgCanvas.clearSelection();
+				//	//hideSourceEditor();
+				//	//zoomImage();
+				//	Editor.paintBox.fill.prep();
+				//	Editor.paintBox.stroke.prep();
+				//
+				//	location.href = '/set.html?id=' + data._id;
+				//};
+				//
+				//if (!svgCanvas.setSvgString($('#svg_source_textarea').val())) {
+				//	$.confirm(uiStrings.notification.QerrorsRevertToSource, function(ok) {
+				//		if(!ok) return false;
+				//		saveChanges();
+				//	});
+				//} else {
+				//	saveChanges();
+				//}
 				//setSelectMode();
 
 
@@ -94,22 +95,24 @@ function drop(ev) {
 
 	$("<img/>").attr("src", imageSrc).load(function(){
 
-		var resizedWidth = this.width;
-		var resizedHeight = this.height;
+		//var resizedWidth = this.width;
+		//var resizedHeight = this.height;
 
-		if (this.height > 100){
-			resizedHeight = 100;
-			var porcentajeReduccion = (100*100) / this.height;  //regla de 3 para dejar la altura de 100px
-			resizedWidth = (porcentajeReduccion * this.width) / 100;
-		}
-		else if(this.width > 100){
-			resizedWidth = 100;
-			var porcentajeReduccion = (100*100) / this.width;  //regla de 3 para dejar la altura de 100px
-			resizedHeight = (porcentajeReduccion * this.height) / 100;
-
-		}
-		var x = ev.layerX - 300;
-		var y = ev.layerY - 200;
+		//if (this.height > 100){
+		//	resizedHeight = 100;
+		//	var porcentajeReduccion = (100*100) / this.height;  //regla de 3 para dejar la altura de 100px
+		//	resizedWidth = (porcentajeReduccion * this.width) / 100;
+		//}
+		//else if(this.width > 100){
+		//	resizedWidth = 100;
+		//	var porcentajeReduccion = (100*100) / this.width;  //regla de 3 para dejar la altura de 100px
+		//	resizedHeight = (porcentajeReduccion * this.height) / 100;
+		//
+		//}
+		var resizedWidth = 100;
+		var resizedHeight = 100;
+		var x = ev.layerX - 335;
+		var y = ev.layerY - 145;
 		var data = {
 			"element": "image",
 			"attr": {
