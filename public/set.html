@@ -3,76 +3,30 @@
 <html lang="en" class="csstransforms csstransforms3d csstransitions">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link type="text/css" rel="stylesheet" href="./Supergrid_files/css">
-  <style type="text/css">.gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
-    font-size: 10px
-  }</style>
-  <style type="text/css">@media print {
-    .gm-style .gmnoprint, .gmnoprint {
-      display: none
-    }
-  }
 
-  @media screen {
-    .gm-style .gmnoscreen, .gmnoscreen {
-      display: none
-    }
-  }</style>
-  <style type="text/css">.gm-style {
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    text-decoration: none
-  }
-
-  .fb_iframe_widget iframe {
-    opacity: 0;
-  }
-
-  .fb_iframe_widget {
-    background-image: url(./Supergrid_files/boton_ingresar-03.png);
-    background-repeat: no-repeat;
-  }</style>
   <meta charset="utf-8">
   <title>sety</title>
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/bootstrap.css">
-  
-  <!-- Google Fonts
-  ================================================== -->
-  <!-- Oswald -->
-  <link href="./Supergrid_files/css(1)" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-  <!-- Le CSS
-  ================================================== -->
-  <!-- These are all the CSS files -->
-
-
+  <style>
+    div#nav-collapse {
+      display: block;
+    }
+  </style>
 
 
   <link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-  <!--<link rel="stylesheet" href="./Supergrid_files/pages.css" type="text/css">-->
-  <!--<link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/responsive-grid.css">-->
-  <!--<link rel="stylesheet" href="./Supergrid_files/flexslider.css" type="text/css">-->
-  <!--<link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/isotope.css">-->
-  <!--<link rel="stylesheet" href="./Supergrid_files/jquery.fancybox.css" type="text/css">-->
 
-  <!-- Le javascript
-  ================================================== -->
-  <!-- These are all the javascript files -->
-
-  <script type="text/javascript" src="./Supergrid_files/tracker.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="./Supergrid_files/bootstrap.min.js"></script>
-  <script src="editor/src/bootbox.min.js"></script>
 
   <style type="text/css"></style>
 
-  <script src="./Supergrid_files/jquery.flexslider-min.js"></script>
+  <!--<script src="./Supergrid_files/jquery.flexslider-min.js"></script>-->
   <script src="./Supergrid_files/load-more.js"></script>
   <script src="./Supergrid_files/jquery.isotope.min.js"></script>
   <script src="./Supergrid_files/jquery.infinitescroll.min.js"></script>
@@ -114,18 +68,22 @@
         href="http://www.yinkle.com/themes/assets/ico/apple-touch-icon-57-precomposed.png">
   <link rel="shortcut icon" href="http://www.yinkle.com/themes/assets/ico/favicon.png">
 
-  <script type="text/javascript" charset="UTF-8" src="./Supergrid_files/common.js"></script>
-  <script type="text/javascript" charset="UTF-8" src="./Supergrid_files/map.js"></script>
-  <script type="text/javascript" charset="UTF-8" src="./Supergrid_files/util.js"></script>
-  <script type="text/javascript" charset="UTF-8" src="./Supergrid_files/marker.js"></script>
-  <script type="text/javascript" charset="UTF-8" src="./Supergrid_files/onion.js"></script>
-  <script type="text/javascript" charset="UTF-8" src="./Supergrid_files/controls.js"></script>
-  <script type="text/javascript" charset="UTF-8" src="./Supergrid_files/stats.js"></script>
-  <script type="text/javascript" charset="UTF-8" src="./Supergrid_files/QuotaService.RecordEvent"></script>
+  <!--<script type="text/javascript" charset="UTF-8" src="editor/src/jquery-ui.min.css"></script>-->
+  <!--<script type="text/javascript" charset="UTF-8" src="./Supergrid_files/common.js"></script>-->
+  <!--<script type="text/javascript" charset="UTF-8" src="./Supergrid_files/map.js"></script>-->
+  <!--<script type="text/javascript" charset="UTF-8" src="./Supergrid_files/util.js"></script>-->
+  <!--<script type="text/javascript" charset="UTF-8" src="./Supergrid_files/marker.js"></script>-->
+  <!--<script type="text/javascript" charset="UTF-8" src="./Supergrid_files/onion.js"></script>-->
+  <!--<script type="text/javascript" charset="UTF-8" src="./Supergrid_files/controls.js"></script>-->
+  <!--<script type="text/javascript" charset="UTF-8" src="./Supergrid_files/stats.js"></script>-->
+  <!--<script type="text/javascript" charset="UTF-8" src="./Supergrid_files/QuotaService.RecordEvent"></script>-->
   <script type="text/javascript" charset="UTF-8" src="editor/src/utils.js"></script>
 
 
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
+  <script type="text/javascript" charset="UTF-8" src="editor/src/bootbox.js"></script>
 </head>
 
 
@@ -204,6 +162,10 @@
   </div>
 </div>
 
+<!--<div id="dialog" title="Basic dialog">-->
+<!--<p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>-->
+<!--</div>-->
+
 <script>
 
   function ShowTooltip(evt) {
@@ -213,6 +175,11 @@
     console.log('mouse in');
 
     $.getJSON( "https://api.mercadolibre.com/items/" + mlid.nodeValue, function( data ) {
+
+//      $( "#dialog" ).dialog();
+
+//      bootbox.alert("Hello world!");
+
       bootbox.dialog({
         title: data.title,
         message: '<a href="' + data.permalink + '"  target="_blank">  <img src="' + data.thumbnail + '" width="100px"/><br/> <b>Precio: </b> ' + data.price + '</a>'
@@ -274,18 +241,18 @@
 
   </div>
   <div id="disqus_thread" style="padding-left:15%;padding-right:15%"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES * * */
-          var disqus_shortname = 'setyteamlio';
-          
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'setyteamlio';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   <span style="height: 20px; width: 40px; min-height: 20px; min-width: 40px; position: absolute; opacity: 0.85; z-index: 8675309; display: none; cursor: pointer; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAUCAYAAAD/Rn+7AAADU0lEQVR42s2WXUhTYRjHz0VEVPRFUGmtVEaFUZFhHxBhsotCU5JwBWEf1EWEEVHQx4UfFWYkFa2biPJiXbUta33OXFtuUXMzJ4bK3Nqay7m5NeZq6h/tPQ+xU20zugjOxR/+7/O8539+5znnwMtNTExwJtMb3L/fiLv3botCSmUjeCaejTOb39AiFothfHxcFIrHY8RksZjBsckJcOIRMfFsHD/SsbExUYpnI8DR0dGUGjSb0byhEJp5Uqg5CTSzc2CQleJbMEj9/ywBcGRkJEk9DQqouEVQT1sK444yWI9UonmTjGqauVLEIlHa9x8lAMbj8SSpp0rwKGMVvg8P46vbg0C7na8z8JsMcgHe7jlEa+edRhiLy8n/TUMfu6EvLElk+U0WtGwrTrdfAGQf5J8iiK4LVzDU28t8JtMSocf8E+l68myaNFXm/6rXslLK7ay5TOunuRvZWpJuvwAYjUaTpOIWoquuAZ219RTaxKYp9BbjycoN5FvL9qH9TBX5rvoGdJythvXYSTxdtRnWylO/ZdqrLsGwszzhWQ593z2KlAwCYCQSSZJ6ehZ0W7bD9VBLgN0NCqr3qR7R2rBrL3pu3Sb/7nDlz2uy6cG0OXk0GTbZXzNp8trsPAQdTj6frlWzN2DcXZGKQQAMh8NJ6rpyHe+PnkCr/CAFdZyvpfpjuvkifLF9wIt1Wwlo0OHie1RvWrKa93RjzfzliTzPKz3ltB0/Tevmwp14wGUgHAzSOoUEwFAolFaaBSuhnslPRkJexUJtZ6v5HtUeLswl33n1BgEY5fvhs9sJ3FAiT+QYyyvoAQJuD0KBAFRTJNAuz5/s3gJgMBhMJwrVFRThM5tY5zUF/A4X1f2fvQTRLCuBreoim0YmAbqNJryvPEXeeq46kaNdkQ/1HCncbJKPs9ZSv2VHGfWsZ2hfkhKAfr8/pdxWKx4wwD69PmVfNSOL+lr2w+gYqHpWDtXt1xQ8AMlWU0e1lqLd/APRHoP8AJqWrQG9gYxcPMsvSJUvAA4MDKTUJ7MZLaVy8v+qT21tcDx/OemePr0RTkNrur4A6PP5xCgBsL+/X4wiQDpuuVxOeL1eMYmYeDY6sOp0z+B0OuHxeEQhxkJMFosJiSO/UinOI/8Pc+l7KKArAT8AAAAASUVORK5CYII=);"></span>
 
 </body>
