@@ -13,9 +13,7 @@ $( document ).ready(function() {
 	var $cats = $('#cats');
 	$cats.change(function() {
 		var $cats = $('#cats');
-		var $subcats = $('#subcats');
 		loadSubcats($cats.val());
-		loadImages($subcats.val());
 	});
 
 	var $subcats = $('#subcats');
@@ -83,6 +81,7 @@ function loadSubcats(cat) {
 		data.children_categories.forEach(function(item){
 			$subcats.append( '<option value="' + item.id + '">' + item.name + '</option>' );
 		});
+		loadImages($subcats.val());
 	});
 }
 
