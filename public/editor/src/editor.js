@@ -90,7 +90,7 @@ function loadImages(cat) {
 	$images.empty();
 	$.getJSON( "https://api.mercadolibre.com/sites/MLU/search?category=" + cat, function( data ) {
 		data.results.forEach(function(item){
-			$images.append( '<img src="' + item.thumbnail + '" title="' + item.title + '" ondragstart="drag(event)" />' );
+			$images.append( '<img src="' + item.thumbnail + '" title="' + item.title + '" ondragstart="drag(event)" id="' + item.id + '" />' );
 		});
 	});
 }
@@ -108,6 +108,7 @@ function getMeta(url){
 function drag(ev) {
 
 	ev.dataTransfer.setData("src", ev.target.src);
+	ev.dataTransfer.setData("mlId", ev.target.id);
 	console.log();
 }
 
@@ -117,6 +118,7 @@ function drop(ev) {
 
 	ev.preventDefault();
 	var imageSrc  = ev.dataTransfer.getData("src");
+	var mlId  = ev.dataTransfer.getData("mlId");
 
 	$("<img/>").attr("src", imageSrc).load(function(){
 
@@ -146,7 +148,7 @@ function drop(ev) {
 				"width": resizedWidth + 'px',
 				"height": resizedHeight + 'px',
 				"xlink:href": imageSrc,
-				"mlId": "MLU425156179"
+				"mlId": mlId
 			}
 		};
 		console.log(data);
