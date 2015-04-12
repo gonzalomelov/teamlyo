@@ -18,13 +18,16 @@ $( document ).ready(function() {
 		console.log('btnPublish');
 		console.log(svgCanvas.getSvgString());
 
-		$.post("demo_test_post.asp",
+		$.post("/api/sets",
 			{
-				name: "Donald Duck",
-				city: "Duckburg"
+				picture: svgCanvas.getSvgString(),
+				title: 'New set',
+				likeCount: 2,
+				userId: '5529c014b7626860bc25de99'
 			},
 			function(data,status){
-				alert("Data: " + data + "\nStatus: " + status);
+				console.log(data);
+				location.href = '/sets/' + data._id;
 			});
 	});
 
@@ -48,24 +51,39 @@ function drag(ev) {
 
 function drop(ev) {
 
+	console.log(ev);
+
 	ev.preventDefault();
 	var imageSrc  = ev.dataTransfer.getData("src");
 
 	$("<img/>").attr("src", imageSrc).load(function(){
 
-		var meta = {w:this.width, h:this.height};
+		var resizedWidth = this.width;
+		var resizedHeight = this.height;
 
+		if (this.height > 100){
+			resizedHeight = 100;
+			var porcentajeReduccion = (100*100) / this.height;  //regla de 3 para dejar la altura de 100px
+			resizedWidth = (porcentajeReduccion * this.width) / 100;
+		}
+		else if(this.width > 100){
+			resizedWidth = 100;
+			var porcentajeReduccion = (100*100) / this.width;  //regla de 3 para dejar la altura de 100px
+			resizedHeight = (porcentajeReduccion * this.height) / 100;
+
+		}
+		var x = ev.layerX - 300;
+		var y = ev.layerY - 200;
 		var data = {
 			"element": "image",
 			"attr": {
-				"x": 0,
-				"y": 0,
-				"width": this.width + 'px',
-				"height": this.height + 'px',
+				"x": x,
+				"y": y,
+				"width": resizedWidth + 'px',
+				"height": resizedHeight + 'px',
 				"xlink:href": imageSrc
 			}
 		};
-
 		console.log(data);
 		svgCanvas.addSvgElementFromJson(data);
 	});
