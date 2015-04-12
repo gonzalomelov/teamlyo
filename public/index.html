@@ -145,7 +145,11 @@
 
              divOthersItmes+= "<div class='entry-image'> <a href='./Supergrid_files/geek_bbb.jpg' class='fancybox'> <span class='entry-image-overlay'>";
              
-             divOthersItmes+= "</span> <img src='./Supergrid_files/geek_bbb.jpg' alt=''> </a> </div> <div class='entry drop-shadow curved '>";
+             divOthersItmes+= "</span>";
+
+            divOthersItmes += "<div id='" + value._id + "'></div>";
+
+            divOthersItmes += "</a> </div> <div class='entry drop-shadow curved '>";
              
              divOthersItmes+= "<h5 class='heading'> <a href='http://www.yinkle.com/themes/supergrid/portfolio-single.html'>";
               divOthersItmes+= value.title ;
@@ -155,8 +159,10 @@
             
               
               $("#otherItems").append(divOthersItmes); 
-                
-          //}
+            
+              $("#" + value._id).html(value.picture);
+
+          }
 
       });
   }

@@ -2,10 +2,15 @@
  * Created by santiago on 4/11/15.
  */
 
+
+var items = [];
+
 $( document ).ready(function() {
-	
+
+	items = [];
+
 	var $images = $('#products_table');
-	
+
 	loadCats();
 	loadSubcats("MLA5725");
 	loadImages("MLU1747");
@@ -24,40 +29,17 @@ $( document ).ready(function() {
 
 	$( "#btnPublish" ).click(function() {
 		console.log('btnPublish');
-		console.log(svgCanvas.getSvgString());
 
+		var body = {
+			picture: svgCanvas.getSvgString(),
+			title: $("#title").val(),
+			likeCount: 2,
+			userId: '5529c014b7626860bc25de99'
+		};
 		$.post("/api/sets",
-			{
-				picture: svgCanvas.getSvgString(),
-				title: $("#title").val(),
-				likeCount: 2,
-				userId: '5529c014b7626860bc25de99'
-			},
+			body,
 			function(data,status){
 				console.log(data);
-				location.href = '/set.html?id=' + data._id;
-
-				//var saveChanges = function() {
-				//	svgCanvas.clearSelection();
-				//	//hideSourceEditor();
-				//	//zoomImage();
-				//	Editor.paintBox.fill.prep();
-				//	Editor.paintBox.stroke.prep();
-				//
-				//	location.href = '/set.html?id=' + data._id;
-				//};
-				//
-				//if (!svgCanvas.setSvgString($('#svg_source_textarea').val())) {
-				//	$.confirm(uiStrings.notification.QerrorsRevertToSource, function(ok) {
-				//		if(!ok) return false;
-				//		saveChanges();
-				//	});
-				//} else {
-				//	saveChanges();
-				//}
-				//setSelectMode();
-
-
 			});
 	});
 
@@ -119,23 +101,9 @@ function drop(ev) {
 	ev.preventDefault();
 	var imageSrc  = ev.dataTransfer.getData("src");
 	var mlId  = ev.dataTransfer.getData("mlId");
+	items.push(mlId);
 
 	$("<img/>").attr("src", imageSrc).load(function(){
-
-		//var resizedWidth = this.width;
-		//var resizedHeight = this.height;
-
-		//if (this.height > 100){
-		//	resizedHeight = 100;
-		//	var porcentajeReduccion = (100*100) / this.height;  //regla de 3 para dejar la altura de 100px
-		//	resizedWidth = (porcentajeReduccion * this.width) / 100;
-		//}
-		//else if(this.width > 100){
-		//	resizedWidth = 100;
-		//	var porcentajeReduccion = (100*100) / this.width;  //regla de 3 para dejar la altura de 100px
-		//	resizedHeight = (porcentajeReduccion * this.height) / 100;
-		//
-		//}
 		var resizedWidth = 100;
 		var resizedHeight = 100;
 		var x = ev.layerX - 335;
