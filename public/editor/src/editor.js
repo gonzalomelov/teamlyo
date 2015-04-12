@@ -7,11 +7,26 @@ $( document ).ready(function() {
 	var select = $('#cats');
 
 	$.getJSON( "https://api.mercadolibre.com/sites/MLA/categories", function( data ) {
-
 		data.forEach(function(item){
 			select.append( '<option value="' + item.id + '">' + item.name + '</option>' );
 		});
+	});
 
+	var $subcats = $('#subcats');
+	$.getJSON( "https://api.mercadolibre.com/categories/MLA5725", function( data ) {
+		data.children_categories.forEach(function(item){
+			$subcats.append( '<option value="' + item.id + '">' + item.name + '</option>' );
+		});
+	});
+ 
+	select.change(function() {
+	  var $subcats = $('#subcats');
+	  $subcats.empty();
+		$.getJSON( "https://api.mercadolibre.com/categories/" + select.val(), function( data ) {
+			data.children_categories.forEach(function(item){
+				$subcats.append( '<option value="' + item.id + '">' + item.name + '</option>' );
+			});
+		});
 	});
 
 	$( "#btnPublish" ).click(function() {
