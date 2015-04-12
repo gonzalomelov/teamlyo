@@ -143,7 +143,7 @@
              
              divOthersItmes+= "<div class='entry-container span4'>";
 
-             divOthersItmes+= "<div class='entry-image'> <a href='./Supergrid_files/geek_bbb.jpg' class='fancybox'> <span class='entry-image-overlay'>";
+             divOthersItmes+= "<div class='entry-image' style='height: 400px; background-size: cover; background-image: url(http://localhost:3000/api/sets/" + value._id + "/picture)' > <a href='http://localhost:3000/set.html?id=" + value._id + "' class='fancybox'> <span class='entry-image-overlay'>";
              
              divOthersItmes+= "</span>";
 
@@ -160,7 +160,7 @@
               
               $("#otherItems").append(divOthersItmes); 
             
-              $("#" + value._id).html(value.picture);
+              // $("#" + value._id).html(value.picture);
 
           // }
 
