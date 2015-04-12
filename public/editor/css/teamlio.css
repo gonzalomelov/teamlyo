@@ -1,3 +1,8 @@
-div#products_table {
-    height: 400px !important;
+#canvas_panel {
+    height: 100%;
+}
+
+#products_table {
+    overflow-y: scroll;
+    height: 100%;
 }

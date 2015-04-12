@@ -3,30 +3,25 @@
  */
 
 $( document ).ready(function() {
+	
+	var $images = $('#products_table');
+	
+	loadCats();
+	loadSubcats("MLA5725");
+	loadImages("MLU1747");
 
-	var select = $('#cats');
-
-	$.getJSON( "https://api.mercadolibre.com/sites/MLA/categories", function( data ) {
-		data.forEach(function(item){
-			select.append( '<option value="' + item.id + '">' + item.name + '</option>' );
-		});
+	var $cats = $('#cats');
+	$cats.change(function() {
+		var $cats = $('#cats');
+		var $subcats = $('#subcats');
+		loadSubcats($cats.val());
+		loadImages($subcats.val());
 	});
 
 	var $subcats = $('#subcats');
-	$.getJSON( "https://api.mercadolibre.com/categories/MLA5725", function( data ) {
-		data.children_categories.forEach(function(item){
-			$subcats.append( '<option value="' + item.id + '">' + item.name + '</option>' );
-		});
-	});
-
-	select.change(function() {
+	$subcats.change(function() {
 		var $subcats = $('#subcats');
-		$subcats.empty();
-		$.getJSON( "https://api.mercadolibre.com/categories/" + select.val(), function( data ) {
-			data.children_categories.forEach(function(item){
-				$subcats.append( '<option value="' + item.id + '">' + item.name + '</option>' );
-			});
-		});
+		loadImages($subcats.val());
 	});
 
 	$( "#btnPublish" ).click(function() {
@@ -68,8 +63,39 @@ $( document ).ready(function() {
 			});
 	});
 
-
+	var $title = $("#title");
+	$title.focus();
 });
+
+function loadCats() {
+	var $cats = $('#cats');
+	$.getJSON( "https://api.mercadolibre.com/sites/MLU/categories", function( data ) {
+		data.forEach(function(item){
+			$cats.append( '<option value="' + item.id + '">' + item.name + '</option>' );
+		});
+	});
+}
+
+function loadSubcats(cat) {
+	var $subcats = $('#subcats');
+	$subcats.empty();
+	$.getJSON( "https://api.mercadolibre.com/categories/" + cat, function( data ) {
+		data.children_categories.forEach(function(item){
+			$subcats.append( '<option value="' + item.id + '">' + item.name + '</option>' );
+		});
+	});
+}
+
+function loadImages(cat) {
+	var $images = $('#products_table');
+	$images.empty();
+	$.getJSON( "https://api.mercadolibre.com/sites/MLU/search?category=" + cat, function( data ) {
+		data.results.forEach(function(item){
+			$images.append( '<img src="' + item.thumbnail + '" title="' + item.title + '" ondragstart="drag(event)" />' );
+		});
+	});
+}
+
 function allowDrop(ev) {
 	ev.preventDefault();
 }
