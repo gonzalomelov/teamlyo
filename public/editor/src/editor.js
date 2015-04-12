@@ -149,6 +149,8 @@ function drop(ev) {
 				"height": resizedHeight + 'px',
 				"xlink:href": imageSrc,
 				"mlId": mlId
+				"onmouseover" : "ShowTooltip(evt);",
+				"onmouseout" : "HideTooltip(evt);"
 			}
 		};
 		console.log(data);
