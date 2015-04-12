@@ -50,7 +50,7 @@ var SetSchema = new Schema({
 		type: String,
 		required: true
 	},
-	pictureUrl: {
+	picture: {
 		type: String,
 		required: true
 	},

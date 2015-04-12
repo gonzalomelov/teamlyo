@@ -10,7 +10,7 @@ mongoDB.loadMongoModels();
 
 var home = require('./routes/home');
 var users = require('./routes/users');
-var users = require('./routes/sets');
+var sets = require('./routes/sets');
 
 var app = express();
 
@@ -28,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', home);
 app.use('/users', users);
+app.use('/sets', sets);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
