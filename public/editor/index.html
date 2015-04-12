@@ -82,12 +82,21 @@
 	<script type="text/javascript" src="lib/taphold.js"></script>
 	<!--{endif}-->
 
-
 	<title>Method Draw</title>
 </head>
 <body>
 
-<img src="images/logo.png">
+<div style="padding: 5px;">
+  <div style=" display: inline-block; width: 100%; text-align: center;">
+    <img src="images/logo.png" style=" float: left;">
+
+    <input id="title" type="text" name="title" placeholder="Título" style="color: #ffffff; border: none; background-color: transparent; font-size:24px;">
+
+    <div id="buttons" style=" float: right;">
+      <button class="btn btn-default" id="btnPublish">Publicar</button>
+    </div>
+  </div>
+</div>
 
 <div style="margin-top: 200px"></div>
 
@@ -114,7 +123,7 @@
 		</div>
 	</div>
 
-	<!-- <div id="menu_bar"> -->
+	 <!--<div id="menu_bar">-->
 	<!-- <a class="menu">
         <div class="menu_title" id="logo"></div>
         <div class="menu_list">
@@ -124,16 +133,16 @@
         </div>
       </a> -->
 
-	<!-- <div class="menu">
-          <div class="menu_title">File</div>
-          <div class="menu_list" id="file_menu">
-              <div id="tool_clear" class="menu_item">New Document</div>
-              <div id="tool_open" class="menu_item" style="display: none;"><div id="fileinputs"></div>Open SVG...</div>
-              <div id="tool_import" class="menu_item" style="display: none;"><div id="fileinputs_import"></div>Import Image...</div>
-              <div id="tool_save" class="menu_item">Save Image... <span class="shortcut">⌘S</span></div>
-              <div id="tool_export" class="menu_item">Export as PNG</div>
-          </div>
-      </div> -->
+	 <!--<div class="menu">-->
+          <!--<div class="menu_title">File</div>-->
+          <!--<div class="menu_list" id="file_menu">-->
+              <!--<div id="tool_clear" class="menu_item">New Document</div>-->
+              <!--<div id="tool_open" class="menu_item" style="display: none;"><div id="fileinputs"></div>Open SVG...</div>-->
+              <!--<div id="tool_import" class="menu_item" style="display: none;"><div id="fileinputs_import"></div>Import Image...</div>-->
+              <!--<div id="tool_save" class="menu_item">Save Image... <span class="shortcut">⌘S</span></div>-->
+              <!--<div id="tool_export" class="menu_item">Export as PNG</div>-->
+          <!--</div>-->
+      <!--</div>-->
 
 	<!-- <div class="menu">
         <div class="menu_title">Edit</div>
@@ -175,19 +184,16 @@
                 <div class="menu_item" id="tool_source">Source... <span class="shortcut">⌘U</span></div>
         </div>
       </div> -->
-	<!-- </div> -->
+	 <!--</div>-->
 
 
 
 	<div id="tools_top" class="tools_panel">
-
+      
 		<div id="canvas_panel" class="context_panel">
 
-			<h4 class="clearfix">ML Products</h4>
-
-			<select id="cats">
-
-			</select>
+      <select id="cats"></select>
+      <select id="subcats"></select>
 
 			<!--<label data-title="Change canvas width">-->
 			<!--<input size="3" id="canvas_width" type="text" pattern="[0-9]*" />-->
@@ -213,17 +219,13 @@
 
 			<div id="products_table">
 
-				<img id="drag1" src="http://i.imgur.com/T3vRl9S.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
-				<img id="drag1" src="http://i.imgur.com/KjQoHBb.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
+				<!-- <img id="drag1" src="http://i.imgur.com/T3vRl9S.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
+				<img id="drag1" src="http://i.imgur.com/KjQoHBb.png"  draggable="true" ondragstart="drag(event)" width="70" height="70"> -->
 				<!--<img id="drag1" src="http://mlu-s1-p.mlstatic.com/cable-thunderbolt-o-adaptador-mini-display-port-hdmi-mac&#45;&#45;867001-MLU20258873315_032015-O.jpg"  draggable="true" ondragstart="drag(event)" width="70" height="70">-->
 				<!--<img id="drag1" src="http://mlu-s1-p.mlstatic.com/sofa-sillon-chaise-unico-living-hasta-18-cuotas-sin-recibo-23351-MLU20246150379_022015-F.jpg"  draggable="true" ondragstart="drag(event)" width="70" height="70">-->
-				<img id="drag1" src="http://a1.images.mywebroom.com/image/upload/v1411667410/86099-items_design-922-image_name-bigchaira.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
-				<img id="drag1" src="http://a1.images.mywebroom.com/image/upload/v1395436007/51549-items_design-zuo-era-barbary-coast-coffee-cart-table-tables-brown-industrial-zuo-era-wood-barbary-coast-coffee-ca-image_name-a1.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
+				<!-- <img id="drag1" src="http://a1.images.mywebroom.com/image/upload/v1411667410/86099-items_design-922-image_name-bigchaira.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
+				<img id="drag1" src="http://a1.images.mywebroom.com/image/upload/v1395436007/51549-items_design-zuo-era-barbary-coast-coffee-cart-table-tables-brown-industrial-zuo-era-wood-barbary-coast-coffee-ca-image_name-a1.png"  draggable="true" ondragstart="drag(event)" width="70" height="70"> -->
 
-			</div>
-
-			<div id="buttons">
-				<button class="btn btn-default" id="btnPublish">Publicar</button>
 			</div>
 
 			<!-- <div class="draginput"> -->
