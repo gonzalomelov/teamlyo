@@ -7,7 +7,7 @@ exports.getSets = function(req, res, next) {
       return res.json({errors: [err]});
     }
     return res.send(sets);
-  });
+  }).sort({likeCount: -1});
 }
 
 exports.getSet = function(req, res, next) {

@@ -7,8 +7,7 @@ var ItemSchema = new Schema({
 		required : true
 	},
 	title : {
-		type:String,
-		required : true
+		type:String
 	},
 	url : {
 		type:String,
