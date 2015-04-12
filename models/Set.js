@@ -1,35 +1,35 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var ItemSchema = new Schema({
-	idMercadolibre : {
-		type:String,
-		required : true
-	},
-	title : {
-		type:String,
-		required : true
-	},
-	url : {
-		type:String,
-		required: true
-	},
-	price : {
-		type: Number,
-		required : true
-	},
-	currency : {
-		type:String
-	},
-	imageUrl : {
-		type:String,
-	}
-
-});
+//var ItemSchema = new Schema({
+//	idMercadolibre : {
+//		type:String,
+//		required : true
+//	},
+//	title : {
+//		type:String,
+//		required : true
+//	},
+//	url : {
+//		type:String,
+//		required: true
+//	},
+//	price : {
+//		type: Number,
+//		required : true
+//	},
+//	currency : {
+//		type:String
+//	},
+//	imageUrl : {
+//		type:String
+//	}
+//
+//});
 
 var CommentSchema = new Schema ({
 	date: {
-		type:Date,
+		type:Date
 	},
 	comment : {
 		type :String,
@@ -39,7 +39,7 @@ var CommentSchema = new Schema ({
 		type : String,
 		required : true
 	}
-}); 
+});
 
 var SetSchema = new Schema({
 	picture: {
@@ -47,18 +47,17 @@ var SetSchema = new Schema({
 		required: true
 	},
 	title: {
-		type: String,
-		required: true
+		type: String
 	},
 	likeCount: {
-		type: Number,
+		type: Number
 	},
 	userId : {
 		type:String,
 		required:true
 	},
 	comments : [CommentSchema],
-	items : [ItemSchema]
+	items : [String]
 });
 
 SetSchema.methods = {

@@ -23,6 +23,15 @@
     font-size: 11px;
     font-weight: 400;
     text-decoration: none
+  }
+
+  .fb_iframe_widget iframe {
+    opacity: 0;
+  }
+
+  .fb_iframe_widget {
+    background-image: url(./Supergrid_files/boton_ingresar-03.png);
+    background-repeat: no-repeat;
   }</style>
   <meta charset="utf-8">
   <title>sety</title>
@@ -39,11 +48,11 @@
   ================================================== -->
   <!-- These are all the CSS files -->
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 
 
   <link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/style.css">
-  <!--<link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/bootstrap.css">-->
+  <link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/bootstrap.css">
   <link rel="stylesheet" href="./Supergrid_files/pages.css" type="text/css">
   <link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/responsive-grid.css">
   <link rel="stylesheet" href="./Supergrid_files/flexslider.css" type="text/css">
@@ -116,10 +125,7 @@
 </head>
 
 
-
-
-<!--<body onload="initialize()" data-pinterest-extension-installed="cr1.35">-->
-<body onload="initialize()" data-pinterest-extension-installed="cr1.35">
+<body  data-pinterest-extension-installed="cr1.35">
 
 <!-- Preloader -->
 <div id="preloader" style="display: none;">
@@ -143,23 +149,49 @@
       <ul class="nav">
 
         <!-- Slap your logo here -->
-        <li class="logo"><a>sety</a></li>
+        <li class="logo">
+          <img src="./images/logo.svg">
+        </li>
 
         <!-- portfolio (drop down) -->
         <li>
           <a href="http://www.yinkle.com/themes/supergrid/#filter=.portfolio" class="selected"><span
-                  data-toggle="collapse" data-target="#portfolio-collapse"></span>EXPLORE</a>
+                  data-toggle="collapse" data-target="#portfolio-collapse"></span>EXPLORAR</a>
           <ul id="portfolio-collapse" class="collapse out">
-            <li><a href="http://localhost:3000/#filter=.graphics">Accesorios para Vehículos</a></li>
-            <li><a href="http://localhost:3000/#filter=.illustration">Animales y Mascotas</a></li>
-            <li><a href="http://localhost:3000/#filter=.web">Antigüedades</a></li>
             <li><a href="http://localhost:3000/#filter=.web">Más Recientes</a></li>
             <li><a href="http://localhost:3000/#filter=.web">Más Relevantes</a></li>
           </ul>
         </li>
 
         <!-- blog -->
-        <li><a href="/editor">CREAR</a></li>
+        <li><a href="http://localhost:3000/editor">CREAR</a></li>
+
+        <!-- grid widgets -->
+        <li id="btnLogin">
+          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+          </fb:login-button>
+        </li>
+        <li id="btnSalir" style="display:none">
+          Salir
+        </li>
+        <div id="UserName" style="display:none">
+
+        </div>
+
+        <!-- elements -->
+        <!-- <li>
+            <a href="http://localhost:3000/#filter=.shortcodes">ELEMENTS</a>
+        </li> -->
+
+        <!-- pages (drop down) -->
+        <!-- <li>
+            <a><span data-toggle="collapse" data-target="#pages-collapse"></span>PAGES</a>
+            <ul id="pages-collapse" class="collapse out">
+                <li><a href="http://localhost:3000/#filter=.page-about">ABOUT</a></li>
+                <li><a href="http://localhost:3000/#filter=.page-team">TEAM</a></li>
+                <li><a href="http://localhost:3000/#filter=.page-contact">CONTACT</a></li>
+            </ul>
+        </li> -->
 
       </ul>
     </div>
@@ -196,20 +228,12 @@
   };
 
   $( document ).ready(function() {
-
     var id = QueryString.id;
     console.log(id);
     $.getJSON( "/api/sets/" + id, function( data ) {
       container = document.getElementById("container");
       container.innerHTML = data.picture;
     });
-
-//    $('svg').selectAll(".node").each(
-//            function(d,i){
-//              $(this).popover({title:"title", content:"content", container:"body"});
-//              // and/or $(this).tooltip({title:"tooltip - title", container:"body"});
-//    });
-
   });
 
 </script>
@@ -239,131 +263,12 @@
           </a>
         </div>
 
-        <!--<div class="entry drop-shadow curved ">-->
 
-        <!--&lt;!&ndash; Portfolio Heading &ndash;&gt;-->
-        <!--<h5 class="heading">-->
-        <!--<a href="http://www.yinkle.com/themes/supergrid/blog-single.html">-->
-        <!--PROJECT TITLE-->
-        <!--</a>-->
-        <!--</h5>-->
-
-        <!--<ul class="social">-->
-        <!--<li class="social-button-team right"><a rel="alternate" data-original-title="Facebook"><img-->
-        <!--src="./Supergrid_files/glyphicons_410_facebook.png" alt=""></a></li>-->
-        <!--<li class="social-button-team right"><a rel="alternate" data-original-title="Twitter"><img-->
-        <!--src="./Supergrid_files/glyphicons_411_twitter.png" alt=""></a></li>-->
-        <!--<li class="social-button-team right"><a rel="alternate" data-original-title="Dribbble"><img-->
-        <!--src="./Supergrid_files/glyphicons_394_dribbble.png" alt=""></a></li>-->
-        <!--</ul>-->
-
-
-        <!--&lt;!&ndash; Portfolio Description &ndash;&gt;-->
-        <!--<p>-->
-        <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut-->
-        <!--labore et dolore magna aliqua.-->
-
-        <!--</p>-->
-
-        <!--<div class="stripes"></div>-->
-        <!--</div>-->
       </div>
     </div>
 
-    <!--
-    ==================================================
-    =====	PORTFOLIO
-    =====	this is the portfolio block
-    ================================================== -->
 
   </div>
-
-  <!-- JQUERY (flexslider)
-  ================================================== -->
-  <!-- Script for the awesome slider -->
-
-  <!--<script type="text/javascript">-->
-  <!--$(function () {-->
-  <!--$('.full-slider .flexslider').flexslider({-->
-  <!--animation: "slide",-->
-  <!--directionNav: true,-->
-
-  <!--});-->
-
-  <!--$('.widget-slider .flexslider').flexslider({-->
-  <!--animation: "slide",-->
-  <!--directionNav: false,-->
-  <!--slideshow: false-->
-
-  <!--});-->
-
-  <!--});-->
-  <!--</script>-->
-
-  <!-- JQUERY (tooltips)
-  ================================================== -->
-  <!-- Script for the awesome tooltips -->
-
-  <!--<script>-->
-  <!--$("[rel=alternate]").tooltip()-->
-  <!--</script>-->
-
-  <!--&lt;!&ndash; JQUERY (hash)-->
-  <!--================================================== &ndash;&gt;-->
-  <!--&lt;!&ndash; reexcute scripts on hash change &ndash;&gt;-->
-
-  <!--<script>-->
-
-  <!--$(window).bind('hashchange', function (event) {-->
-  <!--$.getScript("js/load-more.js")-->
-  <!--});-->
-
-  <!--</script>-->
-
-  <!--&lt;!&ndash; JQUERY (fancy)-->
-  <!--================================================== &ndash;&gt;-->
-  <!--&lt;!&ndash; Script for the awesome fancybox &ndash;&gt;-->
-
-  <!--<script type="text/javascript">-->
-  <!--$(document).ready(function () {-->
-  <!--$(".fancybox").fancybox({-->
-  <!--helpers: {-->
-  <!--overlay: {-->
-  <!--locked: false-->
-  <!--}-->
-  <!--},-->
-
-  <!--padding: ['5px', '5px', '5px', '5px']-->
-  <!--});-->
-  <!--});-->
-  <!--</script>-->
-
-  <!-- JQUERY (isotope)
-  ================================================== -->
-  <!-- Script for the super awesome grid (Thanks, David DeSandro) -->
-
-  <!--<script src="./Supergrid_files/jquery.isotope_custom.js"></script>-->
-
-
-  <!--<script type="text/javascript">-->
-  <!--var GoSquared = {};-->
-  <!--GoSquared.acct = "GSN-959941-K";-->
-  <!--(function (w) {-->
-  <!--function gs() {-->
-  <!--w._gstc_lt = +new Date;-->
-  <!--var d = document, g = d.createElement("script");-->
-  <!--g.type = "text/javascript";-->
-  <!--g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";-->
-  <!--var s = d.getElementsByTagName("script")[0];-->
-  <!--s.parentNode.insertBefore(g, s);-->
-  <!--}-->
-
-  <!--w.addEventListener ?-->
-  <!--w.addEventListener("load", gs, false) :-->
-  <!--w.attachEvent("onload", gs);-->
-  <!--})(window);-->
-  <!--</script>-->
-
 
   <span style="height: 20px; width: 40px; min-height: 20px; min-width: 40px; position: absolute; opacity: 0.85; z-index: 8675309; display: none; cursor: pointer; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAUCAYAAAD/Rn+7AAADU0lEQVR42s2WXUhTYRjHz0VEVPRFUGmtVEaFUZFhHxBhsotCU5JwBWEf1EWEEVHQx4UfFWYkFa2biPJiXbUta33OXFtuUXMzJ4bK3Nqay7m5NeZq6h/tPQ+xU20zugjOxR/+7/O8539+5znnwMtNTExwJtMb3L/fiLv3botCSmUjeCaejTOb39AiFothfHxcFIrHY8RksZjBsckJcOIRMfFsHD/SsbExUYpnI8DR0dGUGjSb0byhEJp5Uqg5CTSzc2CQleJbMEj9/ywBcGRkJEk9DQqouEVQT1sK444yWI9UonmTjGqauVLEIlHa9x8lAMbj8SSpp0rwKGMVvg8P46vbg0C7na8z8JsMcgHe7jlEa+edRhiLy8n/TUMfu6EvLElk+U0WtGwrTrdfAGQf5J8iiK4LVzDU28t8JtMSocf8E+l68myaNFXm/6rXslLK7ay5TOunuRvZWpJuvwAYjUaTpOIWoquuAZ219RTaxKYp9BbjycoN5FvL9qH9TBX5rvoGdJythvXYSTxdtRnWylO/ZdqrLsGwszzhWQ593z2KlAwCYCQSSZJ6ehZ0W7bD9VBLgN0NCqr3qR7R2rBrL3pu3Sb/7nDlz2uy6cG0OXk0GTbZXzNp8trsPAQdTj6frlWzN2DcXZGKQQAMh8NJ6rpyHe+PnkCr/CAFdZyvpfpjuvkifLF9wIt1Wwlo0OHie1RvWrKa93RjzfzliTzPKz3ltB0/Tevmwp14wGUgHAzSOoUEwFAolFaaBSuhnslPRkJexUJtZ6v5HtUeLswl33n1BgEY5fvhs9sJ3FAiT+QYyyvoAQJuD0KBAFRTJNAuz5/s3gJgMBhMJwrVFRThM5tY5zUF/A4X1f2fvQTRLCuBreoim0YmAbqNJryvPEXeeq46kaNdkQ/1HCncbJKPs9ZSv2VHGfWsZ2hfkhKAfr8/pdxWKx4wwD69PmVfNSOL+lr2w+gYqHpWDtXt1xQ8AMlWU0e1lqLd/APRHoP8AJqWrQG9gYxcPMsvSJUvAA4MDKTUJ7MZLaVy8v+qT21tcDx/OemePr0RTkNrur4A6PP5xCgBsL+/X4wiQDpuuVxOeL1eMYmYeDY6sOp0z+B0OuHxeEQhxkJMFosJiSO/UinOI/8Pc+l7KKArAT8AAAAASUVORK5CYII=);"></span>
 

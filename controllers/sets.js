@@ -38,12 +38,14 @@ exports.getSetPicture = function(req, res, next) {
 
 exports.createSet = function(req, res, next) {
   var set = new Set(req.body);
+  console.log(set);
   set.save(function(err, set, numberAffected) {
     if (err) {
+      console.log(err);
       res.status(400);
       return res.json({errors: [err]});
     }
-    console.log(set);
+    //console.log(set);
     return res.send(set);
   });
 }
