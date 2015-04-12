@@ -42,7 +42,28 @@ $( document ).ready(function() {
 			},
 			function(data,status){
 				console.log(data);
-				location.href = '/sets/' + data._id;
+
+				var saveChanges = function() {
+					svgCanvas.clearSelection();
+					//hideSourceEditor();
+					//zoomImage();
+					Editor.paintBox.fill.prep();
+					Editor.paintBox.stroke.prep();
+
+					//location.href = '/sets/' + data._id;
+				}
+
+				if (!svgCanvas.setSvgString($('#svg_source_textarea').val())) {
+					$.confirm(uiStrings.notification.QerrorsRevertToSource, function(ok) {
+						if(!ok) return false;
+						saveChanges();
+					});
+				} else {
+					saveChanges();
+				}
+				//setSelectMode();
+
+
 			});
 	});
 
@@ -103,3 +124,4 @@ function drop(ev) {
 		svgCanvas.addSvgElementFromJson(data);
 	});
 }
+
