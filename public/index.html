@@ -218,6 +218,7 @@
 
         $('#imgLogin img').attr("src","http://graph.facebook.com/" + response.id + "/picture?type=square");
          
+         localStorage.setItem("userId", response.id);
       });
 
       
@@ -228,6 +229,7 @@
       $("#btnSalir").css( "display", "none" );
       $("#btnLogin").css( "display", "block" );
       $("#UserName").css( "display", "none" );
+      $('#imgLogin img').attr("src","");
 
     } else {
       // The person is not logged into Facebook, so we're not sure if
@@ -235,6 +237,7 @@
       $("#btnSalir").css( "display", "none" );
       $("#btnLogin").css( "display", "block" );
       $("#UserName").css( "display", "none" );
+      $('#imgLogin img').attr("src","");
     }
   }
 
