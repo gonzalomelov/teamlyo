@@ -23,7 +23,16 @@
     font-size: 11px;
     font-weight: 400;
     text-decoration: none
-  }</style>
+  }
+
+  .fb_iframe_widget iframe {
+            opacity: 0;
+        }
+
+        .fb_iframe_widget {
+            background-image: url(./Supergrid_files/boton_ingresar-03.png);
+            background-repeat: no-repeat; 
+        }</style>
   <meta charset="utf-8">
   <title>sety</title>
   <meta name="description" content="">
@@ -39,11 +48,11 @@
   ================================================== -->
   <!-- These are all the CSS files -->
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+ 
 
 
   <link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/style.css">
-  <!--<link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/bootstrap.css">-->
+  <link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/bootstrap.css">
   <link rel="stylesheet" href="./Supergrid_files/pages.css" type="text/css">
   <link rel="stylesheet" href="http://www.yinkle.com/themes/supergrid/css/responsive-grid.css">
   <link rel="stylesheet" href="./Supergrid_files/flexslider.css" type="text/css">
@@ -116,10 +125,7 @@
 </head>
 
 
-
-
-<!--<body onload="initialize()" data-pinterest-extension-installed="cr1.35">-->
-<body onload="initialize()" data-pinterest-extension-installed="cr1.35">
+<body  data-pinterest-extension-installed="cr1.35">
 
 <!-- Preloader -->
 <div id="preloader" style="display: none;">
@@ -128,44 +134,70 @@
 
 
 <div class="navigation">
-  <nav>
+    <nav>
 
-    <!-- Slap your MOBILE logo here -->
-    <a class="mobile-logo" data-toggle="collapse" data-target="#nav-collapse">
-      <span>sety</span>
-    </a>
+        <!-- Slap your MOBILE logo here -->
+        <a class="mobile-logo" data-toggle="collapse" data-target="#nav-collapse">
+            <span>sety</span>
+        </a>
 
-    <!-- NAVIGATION
-    ================================================== -->
-    <!-- Navigation begins here -->
+        <!-- NAVIGATION
+        ================================================== -->
+        <!-- Navigation begins here -->
 
-    <div id="nav-collapse" class="collapse">
-      <ul class="nav">
+        <div id="nav-collapse" class="collapse">
+            <ul class="nav">
 
-        <!-- Slap your logo here -->
-        <li class="logo"><a>sety</a></li>
+                <!-- Slap your logo here -->
+                <li class="logo">
+                  <img src="./images/logo.svg">
+                </li>
 
-        <!-- portfolio (drop down) -->
-        <li>
-          <a href="http://www.yinkle.com/themes/supergrid/#filter=.portfolio" class="selected"><span
-                  data-toggle="collapse" data-target="#portfolio-collapse"></span>EXPLORE</a>
-          <ul id="portfolio-collapse" class="collapse out">
-            <li><a href="http://localhost:3000/#filter=.graphics">Accesorios para Vehículos</a></li>
-            <li><a href="http://localhost:3000/#filter=.illustration">Animales y Mascotas</a></li>
-            <li><a href="http://localhost:3000/#filter=.web">Antigüedades</a></li>
-            <li><a href="http://localhost:3000/#filter=.web">Más Recientes</a></li>
-            <li><a href="http://localhost:3000/#filter=.web">Más Relevantes</a></li>
-          </ul>
-        </li>
+                <!-- portfolio (drop down) -->
+                <li>
+                    <a href="http://www.yinkle.com/themes/supergrid/#filter=.portfolio" class="selected"><span
+                                data-toggle="collapse" data-target="#portfolio-collapse"></span>EXPLORAR</a>
+                    <ul id="portfolio-collapse" class="collapse out">
+                        <li><a href="http://localhost:3000/#filter=.web">Más Recientes</a></li>
+                        <li><a href="http://localhost:3000/#filter=.web">Más Relevantes</a></li>
+                    </ul>
+                </li>
 
-        <!-- blog -->
-        <li><a href="/editor">CREAR</a></li>
+                <!-- blog -->
+                <li><a href="http://localhost:3000/editor">CREAR</a></li>
 
-      </ul>
+                <!-- grid widgets -->
+                <li id="btnLogin">
+                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                    </fb:login-button>
+                </li>
+                <li id="btnSalir" style="display:none">
+                    Salir
+                </li>
+                <div id="UserName" style="display:none">
+                    
+                </div>
+                
+                <!-- elements -->
+                <!-- <li>
+                    <a href="http://localhost:3000/#filter=.shortcodes">ELEMENTS</a>
+                </li> -->
+
+                <!-- pages (drop down) -->
+                <!-- <li>
+                    <a><span data-toggle="collapse" data-target="#pages-collapse"></span>PAGES</a>
+                    <ul id="pages-collapse" class="collapse out">
+                        <li><a href="http://localhost:3000/#filter=.page-about">ABOUT</a></li>
+                        <li><a href="http://localhost:3000/#filter=.page-team">TEAM</a></li>
+                        <li><a href="http://localhost:3000/#filter=.page-contact">CONTACT</a></li>
+                    </ul>
+                </li> -->
+
+            </ul>
+        </div>
+    </nav>
+    <div class="nav-arrow">
     </div>
-  </nav>
-  <div class="nav-arrow">
-  </div>
 </div>
 
 <script>
@@ -272,8 +304,8 @@
 
     <!--
     ==================================================
-    =====	PORTFOLIO
-    =====	this is the portfolio block
+    ===== PORTFOLIO
+    ===== this is the portfolio block
     ================================================== -->
 
   </div>
