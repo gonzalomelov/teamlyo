@@ -148,7 +148,7 @@ function drop(ev) {
 				"width": resizedWidth + 'px',
 				"height": resizedHeight + 'px',
 				"xlink:href": imageSrc,
-				"mlId": mlId
+				"mlId": mlId,
 				"onmouseover" : "ShowTooltip(evt);",
 				"onmouseout" : "HideTooltip(evt);"
 			}
