@@ -6,6 +6,10 @@
 	<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 	<link rel="icon" type="image/png" href="images/logo.png"/>
 
+
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+
+	<!-- -->
 	<!--{if svg_edit_release}>
       <link rel="stylesheet" href="css/method-draw.compiled.css" type="text/css"/>
     <!{else}-->
@@ -13,6 +17,13 @@
 	<link rel="stylesheet" href="lib/jgraduate/css/jgraduate.css" type="text/css"/>
 	<link rel="stylesheet" href="css/method-draw.css" type="text/css"/>
 	<link rel="stylesheet" href="css/fonts.css" type="text/css"/>
+	<link rel="stylesheet" href="css/teamlio.css" type="text/css"/>
+
+	<script type="text/javascript" src="lib/jquery.js"></script>
+
+	<script type="text/javascript" src="src/bootbox.min.js"></script>
+	<script type="text/javascript" src="src/editor.js"></script>
+
 	<!--{endif}-->
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"/>
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -34,91 +45,8 @@
 			display: none;
 		}
 	</style>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-
-	<script type="text/javascript">
-
-		//
-
-		$( document ).ready(function() {
-			console.log( "ready!" );
-
-			var select = $('#cats');
-
-			$.getJSON( "https://api.mercadolibre.com/sites/MLA/categories", function( data ) {
-				console.log(data);
-
-				data.forEach(function(item){
-					select.append( '<option value="' + item.id + '">' + item.name + '</option>' );
-				});
-
-			});
-
-		});
-		function allowDrop(ev) {
-			ev.preventDefault();
-		}
-
-		function getMeta(url){
-			$("<img/>").attr("src", url).load(function(){
-
-				return  {w:this.width, h:this.height};
-				//  alert(s.w+' '+s.h);
-				// return {
-				//   width : s.w,
-				//   height : s.h
-				// }
-			});
-		}
-
-		function drag(ev) {
-			console.log('drag 1!!');
-			ev.dataTransfer.setData("src", ev.target.src);
-			console.log();
-		}
-
-		function drop(ev) {
-
-			console.log('drop 1!!');
-			ev.preventDefault();
-			var imageSrc  = ev.dataTransfer.getData("src");
-
-			$("<img/>").attr("src", imageSrc).load(function(){
-
-				var meta = {w:this.width, h:this.height};
-
-				var data = {
-					"element": "image",
-					"attr": {
-						"x": 0,
-						"y": 0,
-						"width": this.width + 'px',
-						"height": this.height + 'px',
-						"xlink:href": imageSrc
-					}
-				};
-
-				console.log(data);
-				svgCanvas.addSvgElementFromJson(data);
-
-				//  alert(s.w+' '+s.h);
-				// return {
-				//   width : s.w,
-				//   height : s.h
-				// }
-			});
 
 
-
-
-			//ev.target.appendChild(document.getElementById(data));
-
-			// ev.preventDefault();
-			// var data = ev.dataTransfer.getData("text");
-			// ev.target.appendChild(document.getElementById(data));
-		}
-
-	</script>
 
 	<!--{if svg_edit_release}>
       <script type="text/javascript" src="method-draw.compiled.js"></script>
@@ -261,14 +189,14 @@
 
 			</select>
 
-			 <!--<label data-title="Change canvas width">-->
-                <!--<input size="3" id="canvas_width" type="text" pattern="[0-9]*" />-->
-                <!--<span class="icon_label">Width</span>-->
-            <!--</label>-->
-			 <!--<label data-title="Change canvas height">-->
-                <!--<input id="canvas_height" size="3" type="text" pattern="[0-9]*" />-->
-                <!--<span class="icon_label">Height</span>-->
-            <!--</label>-->
+			<!--<label data-title="Change canvas width">-->
+			<!--<input size="3" id="canvas_width" type="text" pattern="[0-9]*" />-->
+			<!--<span class="icon_label">Width</span>-->
+			<!--</label>-->
+			<!--<label data-title="Change canvas height">-->
+			<!--<input id="canvas_height" size="3" type="text" pattern="[0-9]*" />-->
+			<!--<span class="icon_label">Height</span>-->
+			<!--</label>-->
 
 
 			<label data-title="Change canvas color" class="draginput" style='display: none;'>
@@ -283,7 +211,7 @@
 				</div>
 			</label>
 
-			<div>
+			<div id="products_table">
 
 				<img id="drag1" src="http://i.imgur.com/T3vRl9S.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
 				<img id="drag1" src="http://i.imgur.com/KjQoHBb.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
@@ -292,6 +220,10 @@
 				<img id="drag1" src="http://a1.images.mywebroom.com/image/upload/v1411667410/86099-items_design-922-image_name-bigchaira.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
 				<img id="drag1" src="http://a1.images.mywebroom.com/image/upload/v1395436007/51549-items_design-zuo-era-barbary-coast-coffee-cart-table-tables-brown-industrial-zuo-era-wood-barbary-coast-coffee-ca-image_name-a1.png"  draggable="true" ondragstart="drag(event)" width="70" height="70">
 
+			</div>
+
+			<div id="buttons">
+				<button class="btn btn-default" id="btnPublish">Publicar</button>
 			</div>
 
 			<!-- <div class="draginput"> -->
