@@ -146,7 +146,9 @@ function drop(ev) {
 				"width": resizedWidth + 'px',
 				"height": resizedHeight + 'px',
 				"xlink:href": imageSrc,
-				"mlId": "MLU425156179"
+				"mlId": "MLU425156179",
+				"onmouseover" : "ShowTooltip(evt);",
+				"onmouseout" : "HideTooltip(evt);"
 			}
 		};
 		console.log(data);
