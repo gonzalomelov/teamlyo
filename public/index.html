@@ -127,6 +127,61 @@
 <body onload="initialize()" data-pinterest-extension-installed="cr1.35">
 
 <script>
+  function updateSets(result) {
+    alert("get sets success");
+    $.each( result, function( key, value ) {
+        var set = value;
+        
+        if(key==0) {
+
+          var divString = "<div class='widget portfolio homepage grid-widget isotope-item' style='position: absolute; left: 0px; top:";
+          divString+= "0px; transform: translate3d(0px, 22px, 0px);'> <div class='entry-container span8'> <div class='featured-stamp'> <p> FEATURED </p> </div> <div class='entry-image'> <a href='./Supergrid_files/roman-jusdado-telly-detailed.jpg' ";
+          divString+= "class='fancybox'> <span class='entry-image-overlay'></span> <img src='./Supergrid_files/roman-jusdado-telly-detailed.jpg' alt=''> </a> </div> <div class='entry drop-shadow curved'> <h5 class='heading'> <a href='http://www.yinkle.";
+          divString+= "com/themes/supergrid/blog-single.html'>" ;
+           divString+= value.title ;
+            divString+="</a> </h5> <ul class='social'> <li class='social-button-team right'><a rel='alternate' data-original-title='Facebook'><img src='./Supergrid_files/glyphicons_410_facebook.png' alt=''></a></li>";
+          divString+= "<li class='social-button-team right'><a rel='alternate' data-original-title='Twitter'><img src='./Supergrid_files/glyphicons_411_twitter.png' alt=''></a></li> <li class='social-button-team right'><a rel='alternate' data-original-title='Dribbble'>";
+          divString+= "<img src='./Supergrid_files/glyphicons_394_dribbble.png' alt=''></a></li> </ul> <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut abore et dolore magna aliqua. </p> <div class='stripes'></div> </div> </div> </div>";
+          
+        $("#principalBlock").append(divString); 
+        
+        }
+        else {
+             
+            var divOthersItmes = "<div class='widget portfolio web homepage isotope-item' style='position: absolute; left: 0px; top: 0px;'> " ;
+             
+             divOthersItmes+= "<div class='entry-container span4'>";
+
+             divOthersItmes+= "<div class='entry-image'> <a href='./Supergrid_files/geek_bbb.jpg' class='fancybox'> <span class='entry-image-overlay'>";
+             
+             divOthersItmes+= "</span> <img src='./Supergrid_files/geek_bbb.jpg' alt=''> </a> </div> <div class='entry drop-shadow curved '>";
+             
+             divOthersItmes+= "<h5 class='heading'> <a href='http://www.yinkle.com/themes/supergrid/portfolio-single.html'>";
+              divOthersItmes+= value.title ;
+              divOthersItmes+= "</a> </h5> <div class='entry-footer> <ul> <li class='left'>&nbsp&nbsp&nbsp</li> <li class='right no-margin'> <div class='icon like'></div> " ;
+              divOthersItmes+= value.likeCount ;
+              divOthersItmes+=" </li> </ul> </div> <div class='stripes'></div> </div> </div> </div>";
+            
+              
+              $("#otherItems").append(divOthersItmes); 
+                
+          }
+
+      });
+  }
+
+  $( document ).ready(function() {
+    
+    var jqxhr = $.get("/api/sets", function(result) {
+            console.log(result);
+            updateSets(result);
+        })
+        .fail(function() {
+            alert( "Error loading sets" );
+        })
+        
+  });
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -137,10 +192,11 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
-        var jqxhr = $.post("localhost/api/users", function() {
+        /*var jqxhr = $.post("/api/users", function() {
             alert( "success" );
         })
         .done(function() {
+
             alert( "second success" );
         })
         .fail(function() {
@@ -149,11 +205,20 @@
         .always(function() {
             alert( "finished" );
         });
+      */
+      $("#btnLogin").css( "display", "none" );
+      $("#btnSalir").css( "display", "block" );
       
+      $("#UserName").css( "display", "block" );
+      $("#UserName").append(response.status);
+
 
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      
+      $("#btnSalir").css( "display", "none" );
+      $("#btnLogin").css( "display", "block" );
+      $("#UserName").css( "display", "none" );
+
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
@@ -224,7 +289,7 @@
     <div id="status" style="display: none;"></div>
 </div>
 
-<div id="map_canvas"
+<!--<div id="map_canvas"
      style="opacity: 0; width: 100%; height: 100%; overflow: hidden; transform: translateZ(0px); left: -9999px; top: -9999px; background-color: rgb(229, 227, 223);">
     <div class="gm-style"
          style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;">
@@ -500,7 +565,7 @@
                     de un error de Maps</a></div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <!-- Le Header
@@ -550,8 +615,9 @@
                     Salir
                 </li>
                 <div id="UserName" style="display:none">
-
+                    
                 </div>
+                
                 <!-- elements -->
                 <!-- <li>
                     <a href="http://localhost:3000/#filter=.shortcodes">ELEMENTS</a>
@@ -603,65 +669,21 @@
         =====	FEATURED
         =====	this is the featured portfolio block
         ================================================== -->
+        <div id="principalBlock"/>
 
-        <div class="widget portfolio homepage grid-widget isotope-item"
-             style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 22px, 0px);">
-            <div class="entry-container span8">
-
-                <div class="featured-stamp">
-                    <p>FEATURED</p>
-                </div>
-
-                <!-- Portfolio Image -->
-                <div class="entry-image">
-                    <a href="./Supergrid_files/roman-jusdado-telly-detailed.jpg" class="fancybox">
-                        <span class="entry-image-overlay"></span>
-                        <img src="./Supergrid_files/roman-jusdado-telly-detailed.jpg" alt="">
-                    </a>
-                </div>
-
-                <div class="entry drop-shadow curved ">
-
-                    <!-- Portfolio Heading -->
-                    <h5 class="heading">
-                        <a href="http://www.yinkle.com/themes/supergrid/blog-single.html">
-                            PROJECT TITLE
-                        </a>
-                    </h5>
-
-                    <ul class="social">
-                        <li class="social-button-team right"><a rel="alternate" data-original-title="Facebook"><img
-                                        src="./Supergrid_files/glyphicons_410_facebook.png" alt=""></a></li>
-                        <li class="social-button-team right"><a rel="alternate" data-original-title="Twitter"><img
-                                        src="./Supergrid_files/glyphicons_411_twitter.png" alt=""></a></li>
-                        <li class="social-button-team right"><a rel="alternate" data-original-title="Dribbble"><img
-                                        src="./Supergrid_files/glyphicons_394_dribbble.png" alt=""></a></li>
-                    </ul>
-
-
-                    <!-- Portfolio Description -->
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-
-                    </p>
-
-                    <div class="stripes"></div>
-                </div>
-            </div>
-        </div>
-
+        <div id="otherItems"/>
+        
         <!--
         ==================================================
         =====	PORTFOLIO
         =====	this is the portfolio block
         ================================================== -->
-
-        <div class="widget portfolio graphics homepage isotope-item"
-             style="position: absolute; left: 0px; top: 0px; transform: translate3d(656px, 22px, 0px);">
+        
+        <!--<div class="widget portfolio graphics homepage isotope-item"
+             style="position: absolute; left: 0px; top: 0px; ">
             <div class="entry-container span4">
 
-                <!-- Portfolio SLIDER -->
+                
                 <div class="widget-slider">
                     <div class="flexslider" style="height:229px">
 
@@ -721,14 +743,14 @@
                 </div>
 
                 <div class="entry drop-shadow curved">
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             ROMAN JUSDADO
                         </a>
                     </h5>
 
-                    <!-- Portfolio Description -->
+                    
                     <p>This is some super duper awesome work by the talented Roman Jusdado.</p>
 
                     <div class="stripes"></div>
@@ -737,10 +759,10 @@
         </div>
 
         <div class="widget portfolio illustration homepage isotope-item"
-             style="position: absolute; left: 0px; top: 0px; transform: translate3d(984px, 22px, 0px);">
+             style="position: absolute; left: 0px; top: 0px;">
             <div class="entry-container span4">
 
-                <!-- Portfolio SLIDER -->
+                
                 <div class="widget-slider">
                     <div class="flexslider" style="height:229px">
 
@@ -791,14 +813,14 @@
                 </div>
 
                 <div class="entry drop-shadow curved ">
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             ROMAN JUSDADO
                         </a>
                     </h5>
 
-                    <!-- Portfolio Description -->
+                    
                     <p>This is some super duper awesome work by the talented Roman Jusdado.</p>
 
                     <div class="stripes"></div>
@@ -807,13 +829,13 @@
         </div>
 
 
-        <!-- ================================================== -->
+        
 
         <div class="widget portfolio web homepage isotope-item"
-             style="position: absolute; left: 0px; top: 0px; transform: translate3d(656px, 414px, 0px);">
+             style="position: absolute; left: 0px; top: 0px;">
             <div class="entry-container span4">
 
-                <!-- Portfolio Image -->
+                
                 <div class="entry-image">
                     <a href="./Supergrid_files/geek_bbb.jpg" class="fancybox">
                         <span class="entry-image-overlay"></span>
@@ -824,7 +846,7 @@
 
                 <div class="entry drop-shadow curved ">
 
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             HELDER OLIVEIRA
@@ -847,13 +869,13 @@
             </div>
         </div>
 
-        <!-- ================================================== -->
+        
 
         <div class="widget portfolio web homepage isotope-item"
-             style="position: absolute; left: 0px; top: 0px; transform: translate3d(984px, 414px, 0px);">
+             style="position: absolute; left: 0px; top: 0px;">
             <div class="entry-container span4">
 
-                <!-- Portfolio Image -->
+                
                 <div class="entry-image">
                     <a href="./Supergrid_files/geek_bbb.jpg" class="fancybox">
                         <span class="entry-image-overlay"></span>
@@ -864,7 +886,7 @@
 
                 <div class="entry drop-shadow curved ">
 
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             HELDER OLIVEIRA
@@ -878,7 +900,7 @@
                                         src="./Supergrid_files/glyphicons_394_dribbble.png" alt=""></a></li>
                     </ul>
 
-                    <!-- Portfolio Description -->
+                    
                     <p>This is some super duper awesome work by the talented Helder Oliveira. Lorem ipsum dolor sit
                         amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                         aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -900,13 +922,13 @@
             </div>
         </div>
 
-        <!-- ================================================== -->
+        
 
         <div class="widget portfolio graphics homepage isotope-item"
-             style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 658px, 0px);">
+             style="position: absolute; left: 0px; top: 0px;">
             <div class="entry-container span4">
 
-                <!-- Portfolio Image -->
+                
                 <div class="entry-image">
                     <a href="./Supergrid_files/book_1x.jpg" class="fancybox">
                         <span class="entry-image-overlay"></span>
@@ -916,14 +938,14 @@
 
                 <div class="entry drop-shadow curved ">
 
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             SANADAS YOUNG
                         </a>
                     </h5>
 
-                    <!-- Portfolio Description -->
+                   
                     <p>This is some super duper awesome work by the talented Sanadas Young.</p>
 
                     <div class="entry-footer">
@@ -942,13 +964,13 @@
             </div>
         </div>
 
-        <!-- ================================================== -->
+        
 
         <div class="widget portfolio illustrations homepage isotope-item"
              style="position: absolute; left: 0px; top: 0px; transform: translate3d(328px, 658px, 0px);">
             <div class="entry-container span4">
 
-                <!-- Portfolio Image -->
+                
                 <div class="entry-image">
                     <a href="./Supergrid_files/ssg_geothermal_1x.jpg" class="fancybox">
                         <span class="entry-image-overlay"></span>
@@ -958,14 +980,14 @@
 
                 <div class="entry drop-shadow curved ">
 
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             SOONGYU GWON
                         </a>
                     </h5>
 
-                    <!-- Portfolio Description -->
+                    
                     <p>This is some super duper awesome work by the talented Soongyu Gwon.</p>
 
 
@@ -985,13 +1007,13 @@
             </div>
         </div>
 
-        <!-- ================================================== -->
+        
 
         <div class="widget portfolio web homepage isotope-item"
              style="position: absolute; left: 0px; top: 0px; transform: translate3d(656px, 777px, 0px);">
             <div class="entry-container span4">
 
-                <!-- Portfolio Image -->
+                
                 <div class="entry-image">
                     <a href="./Supergrid_files/pride.jpg" class="fancybox">
                         <span class="entry-image-overlay"></span>
@@ -1001,7 +1023,7 @@
 
                 <div class="entry drop-shadow curved ">
 
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             RYAN WELCH
@@ -1013,7 +1035,6 @@
                                         src="./Supergrid_files/glyphicons_410_facebook.png" alt=""></a></li>
                     </ul>
 
-                    <!-- Portfolio Description -->
                     <p>This is some super duper awesome work by the talented Ryan Welch. <br><br>Lorem ipsum dolor sit
                         amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                         aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -1036,13 +1057,12 @@
         </div>
 
 
-        <!-- ================================================== -->
-
+        
         <div class="widget portfolio graphics homepage isotope-item"
              style="position: absolute; left: 0px; top: 0px; transform: translate3d(984px, 949px, 0px);">
             <div class="entry-container span4">
 
-                <!-- Portfolio Image -->
+                
                 <div class="entry-image">
                     <a href="./Supergrid_files/hyenas_1x.jpg" class="fancybox">
                         <span class="entry-image-overlay"></span>
@@ -1052,14 +1072,14 @@
 
                 <div class="entry drop-shadow curved ">
 
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             MATT WILLCOX
                         </a>
                     </h5>
 
-                    <!-- Portfolio Description -->
+                    
                     <p>This is some super duper awesome work by the talented Matt Willcox.</p>
 
                     <div class="entry-footer">
@@ -1078,13 +1098,13 @@
             </div>
         </div>
 
-        <!-- ================================================== -->
+        
 
         <div class="widget portfolio illustration homepage isotope-item"
              style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1073px, 0px);">
             <div class="entry-container span4">
 
-                <!-- Portfolio Image -->
+                
                 <div class="entry-image">
                     <a href="./Supergrid_files/beetle_dribbble.jpg" class="fancybox">
                         <span class="entry-image-overlay"></span>
@@ -1094,7 +1114,7 @@
 
                 <div class="entry drop-shadow curved ">
 
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             ARTEM
@@ -1108,7 +1128,7 @@
                                         src="./Supergrid_files/glyphicons_394_dribbble.png" alt=""></a></li>
                     </ul>
 
-                    <!-- Portfolio Description -->
+                    
                     <p>This is some super duper awesome work by the talented Artem.</p>
 
                     <div class="entry-footer">
@@ -1127,13 +1147,13 @@
             </div>
         </div>
 
-        <!-- ================================================== -->
+        
 
         <div class="widget portfolio illustration homepage isotope-item"
              style="position: absolute; left: 0px; top: 0px; transform: translate3d(328px, 1073px, 0px);">
             <div class="entry-container span4">
 
-                <!-- Portfolio Image -->
+                
                 <div class="entry-image">
                     <a href="./Supergrid_files/expresso.png" class="fancybox">
                         <span class="entry-image-overlay"></span>
@@ -1143,14 +1163,14 @@
 
                 <div class="entry drop-shadow curved ">
 
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             ROMAN JUSADO
                         </a>
                     </h5>
 
-                    <!-- Portfolio Description -->
+                    
                     <p>This is some super duper awesome work by the talented Roman Jusdado.</p>
 
                     <div class="entry-footer">
@@ -1169,13 +1189,13 @@
             </div>
         </div>
 
-        <!-- ================================================== -->
+        
 
         <div class="widget portfolio illustration homepage isotope-item"
              style="position: absolute; left: 0px; top: 0px; transform: translate3d(656px, 1332px, 0px);">
             <div class="entry-container span4">
 
-                <!-- Portfolio Image -->
+                
                 <div class="entry-image">
                     <a href="./Supergrid_files/geek_bbb.jpg" class="fancybox">
                         <span class="entry-image-overlay"></span>
@@ -1185,14 +1205,14 @@
 
                 <div class="entry drop-shadow curved ">
 
-                    <!-- Portfolio Heading -->
+                    
                     <h5 class="heading">
                         <a href="http://www.yinkle.com/themes/supergrid/portfolio-single.html">
                             HELDER OLIVEIRA
                         </a>
                     </h5>
 
-                    <!-- Portfolio Description -->
+                    
                     <p>This is some super duper awesome work by the talented Helder Oliveira.</p>
 
                     <div class="entry-footer">
@@ -1210,7 +1230,7 @@
                 </div>
             </div>
         </div>
-
+      </div>
 
         <!--
         ==================================================
