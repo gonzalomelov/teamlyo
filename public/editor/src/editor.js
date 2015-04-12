@@ -40,6 +40,7 @@ $( document ).ready(function() {
 			body,
 			function(data,status){
 				console.log(data);
+				location.href = '/set.html?id=' + data._id;
 			});
 	});
 
@@ -94,6 +95,7 @@ function drag(ev) {
 	console.log();
 }
 
+
 function drop(ev) {
 
 	console.log(ev);
@@ -101,28 +103,34 @@ function drop(ev) {
 	ev.preventDefault();
 	var imageSrc  = ev.dataTransfer.getData("src");
 	var mlId  = ev.dataTransfer.getData("mlId");
-	items.push(mlId);
 
-	$("<img/>").attr("src", imageSrc).load(function(){
-		var resizedWidth = 100;
-		var resizedHeight = 100;
-		var x = ev.layerX - 335;
-		var y = ev.layerY - 145;
-		var data = {
-			"element": "image",
-			"attr": {
-				"x": x,
-				"y": y,
-				"width": resizedWidth + 'px',
-				"height": resizedHeight + 'px',
-				"xlink:href": imageSrc,
-				"mlId": mlId,
-				"onmouseover" : "ShowTooltip(evt);",
-				"onmouseout" : "HideTooltip(evt);"
-			}
-		};
-		console.log(data);
-		svgCanvas.addSvgElementFromJson(data);
+	$.getJSON( "/api/image?url=" + imageSrc, function( dd ) {
+
+
+		$("<img/>").attr("src", imageSrc).load(function(){
+			var resizedWidth = 100;
+			var resizedHeight = 100;
+			var x = ev.layerX - 335;
+			var y = ev.layerY - 145;
+			var data = {
+				"element": "image",
+				"attr": {
+					"x": x,
+					"y": y,
+					"width": resizedWidth + 'px',
+					"height": resizedHeight + 'px',
+					"xlink:href": dd.data,
+					"mlId": mlId,
+					"onmouseover" : "ShowTooltip(evt);",
+					"onmouseout" : "HideTooltip(evt);"
+				}
+			};
+			//console.log(data);
+			svgCanvas.addSvgElementFromJson(data);
+		});
+
 	});
+
+
 }
 

@@ -6,3 +6,24 @@
     overflow-y: scroll;
     height: 100%;
 }
+
+select#cats {
+    margin-top: 8px;
+    width: 183px;
+    margin-bottom: 4px;
+}
+
+select#subcats {
+    width: 183px;
+    margin-bottom: 7px;
+    margin-top: 2px;
+}
+
+img {
+    margin-right: 4px;
+}
+
+button#btnPublish {
+    margin-right: 13px;
+    margin-top: 3px;
+}
