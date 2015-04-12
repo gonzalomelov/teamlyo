@@ -2,10 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ItemSchema = new Schema({
-	id : {
-		type:String,
-		required : true
-	},
 	idMercadolibre : {
 		type:String,
 		required : true
@@ -46,10 +42,6 @@ var CommentSchema = new Schema ({
 }); 
 
 var SetSchema = new Schema({
-	id: {
-		type: String,
-		required: true
-	},
 	picture: {
 		type: String,
 		required: true

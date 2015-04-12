@@ -22,6 +22,6 @@ exports.createSet = function(req, res, next) {
       return res.json({errors: [err]});
     }
     console.log(set);
-    return res.send(result);
+    return res.send(set);
   });
 }
