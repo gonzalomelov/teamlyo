@@ -143,7 +143,7 @@
              
              divOthersItmes+= "<div class='entry-container span4'>";
 
-             divOthersItmes+= "<div class='entry-image' style='height: 400px; background-size: cover; background-image: url(http://localhost:3000/api/sets/" + value._id + "/picture)' > <a href='http://localhost:3000/set.html?id=" + value._id + "' class='fancybox'> <span class='entry-image-overlay'>";
+             divOthersItmes+= "<div class='entry-image' style='height: 400px; background-size: cover; background-image: url(/api/sets/" + value._id + "/picture)' > <a href='/set.html?id=" + value._id + "' class='fancybox'> <span class='entry-image-overlay'>";
              
              divOthersItmes+= "</span>";
 
@@ -178,7 +178,7 @@
         })
         
         $("#btnCrear").click(function(event){
-          window.location.href = 'http://localhost:3000/editor';
+          window.location.href = '/editor';
           event.preventDefault(); 
         });
         
@@ -327,8 +327,8 @@
                     <a href="http://www.yinkle.com/themes/supergrid/#filter=.portfolio" class="selected"><span
                                 data-toggle="collapse" data-target="#portfolio-collapse"></span>EXPLORAR</a>
                     <ul id="portfolio-collapse" class="collapse out">
-                        <li><a href="http://localhost:3000/#filter=.web">Más Relevantes</a></li>
-                        <li><a href="http://localhost:3000/#filter=.web">Más Recientes</a></li>
+                        <li><a href="/">Más Relevantes</a></li>
+                        <li><a href="/">Más Recientes</a></li>
                     </ul>
                 </li>
 
@@ -356,16 +356,16 @@
                 
                 <!-- elements -->
                 <!-- <li>
-                    <a href="http://localhost:3000/#filter=.shortcodes">ELEMENTS</a>
+                    <a href="/#filter=.shortcodes">ELEMENTS</a>
                 </li> -->
 
                 <!-- pages (drop down) -->
                 <!-- <li>
                     <a><span data-toggle="collapse" data-target="#pages-collapse"></span>PAGES</a>
                     <ul id="pages-collapse" class="collapse out">
-                        <li><a href="http://localhost:3000/#filter=.page-about">ABOUT</a></li>
-                        <li><a href="http://localhost:3000/#filter=.page-team">TEAM</a></li>
-                        <li><a href="http://localhost:3000/#filter=.page-contact">CONTACT</a></li>
+                        <li><a href="/#filter=.page-about">ABOUT</a></li>
+                        <li><a href="/#filter=.page-team">TEAM</a></li>
+                        <li><a href="/#filter=.page-contact">CONTACT</a></li>
                     </ul>
                 </li> -->
 
